@@ -1,34 +1,239 @@
-/* Simple CSS Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ---------- Theme ---------- */
+:root {
+  --bg: #f8e9c1;
+  --card-back: #e0b24c;
+  --card-front: #7798ab;
+  --card-match: #d94f30;
+  --text: #2d1b12;
+
+  --radius: 10px;
+  --border: 3px;
+  --shadow: 2px 2px 0 var(--text);
 }
 
+/* ---------- Reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+img,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
 html,
 body {
   height: 100%;
 }
 
+/* ---------- Base Layout ---------- */
 body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Limelight", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
   line-height: 1.5;
-  font-family: sans-serif;
-  background: #fff;
-  color: #222;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 0 10px;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
+/* film grain & vinyet */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url("assets/grain.jpg");
+  background-size: 128px 128px;
+  mix-blend-mode: multiply;
+  opacity: 0.14;
+  z-index: 0;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    transparent 70%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+  z-index: 0;
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
+/* ---------- Sections ---------- */
+.site-header,
+.site-footer {
+  text-align: center;
+}
+.site-header h1 {
+  font-size: clamp(20px, 3.5vw, 36px);
+  font-weight: 600;
+}
+
+.site-footer {
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding-block: 8px;
+}
+.site-footer a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-footer a:hover {
+  color: var(--card-match);
+}
+
+.main {
+  display: grid;
+  grid-template-rows: 1fr auto auto; /* grid | score | actions */
+  align-items: center;
+  justify-items: center;
+  gap: 12px;
+  padding-block: 6px;
+}
+
+/* ---------- Grid ---------- */
+.grid-container {
+  display: grid;
+  gap: 16px;
+  max-width: 860px;
+  width: 100%;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  align-content: center;
+}
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 960px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Card ---------- */
+.card {
+  aspect-ratio: 2 / 3;
+  width: clamp(64px, 7.5vw, 96px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  border: var(--border) solid var(--text);
+  border-radius: var(--radius);
+  background-color: var(--card-back);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(0, 0, 0, 0.06)
+  );
+  box-shadow: var(--shadow), inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  will-change: transform;
+}
+
+/* nokta dokusu */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+      circle,
+      rgba(45, 27, 18, 0.45) 1px,
+      transparent 1.4px
+    )
+    0 0/10px 10px;
+  mix-blend-mode: multiply;
+  opacity: 0.22;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--text);
+}
+.card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--text);
+}
+
+/* durum renkleri */
+.card.flipped {
+  background-color: var(--card-front);
+}
+.card.matched {
+  background-color: color-mix(in oklab, var(--card-back) 70%, white);
+  transform: translate(-2px, -2px) scale(1.02);
+}
+
+/* erişilebilir focus */
+.card:focus-visible,
+#restart:focus-visible {
+  outline: 3px solid var(--card-match);
+  outline-offset: 2px;
+}
+
+/* ---------- Score & Actions ---------- */
+.score {
+  font-size: clamp(14px, 1.8vw, 20px);
+}
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Button ---------- */
+#restart {
+  font-size: clamp(14px, 1.5vw, 18px);
+  padding: 0.5rem 1.2rem;
+  color: var(--text);
+  background-color: var(--card-back);
+  border: var(--border) solid var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--text);
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.2s,
+    color 0.2s;
+}
+#restart:hover {
+  background-color: var(--card-match);
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--text);
+}
+#restart:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--text);
+}
+
+/* ---------- Motion preference ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
