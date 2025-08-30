@@ -1,20 +1,11 @@
 [
   { "id": 1, "name": "cagney", "image": "assets/cards/cagney.webp" },
-  { "id": 2, "name": "knight", "image": "assets/cards/knight.webp" },
-  { "id": 3, "name": "freezer", "image": "assets/cards/freezer.webp" },
-  { "id": 4, "name": "dice", "image": "assets/cards/dice.webp" },
-  { "id": 5, "name": "maria", "image": "assets/cards/maria.webp" },
-  { "id": 6, "name": "dragmor", "image": "assets/cards/dragmor.webp" },
-  { "id": 7, "name": "ribbycroaks", "image": "assets/cards/ribbycroaks.webp" },
-  { "id": 8, "name": "carrot", "image": "assets/cards/carrot.webp" },
-  { "id": 9, "name": "robot", "image": "assets/cards/robot.webp" },
-  { "id": 10, "name": "chimes", "image": "assets/cards/chimes.webp" },
-  { "id": 11, "name": "chef", "image": "assets/cards/chef.webp" },
-  { "id": 12, "name": "wheezy", "image": "assets/cards/wheezy.webp" },
-  { "id": 13, "name": "whiskey", "image": "assets/cards/whiskey.webp" },
-  { "id": 14, "name": "pipanddot", "image": "assets/cards/pipanddot.webp" },
-  { "id": 15, "name": "rat", "image": "assets/cards/rat.webp" },
-  { "id": 16, "name": "bee", "image": "assets/cards/bee.webp" },
-  { "id": 17, "name": "djimmi", "image": "assets/cards/djimmi.webp" },
-  { "id": 18, "name": "hilda", "image": "assets/cards/hilda.webp" }
+  { "id": 2, "name": "dice", "image": "assets/cards/dice.webp" },
+  { "id": 3, "name": "maria", "image": "assets/cards/maria.webp" },
+  { "id": 4, "name": "chimes", "image": "assets/cards/chimes.webp" },
+  { "id": 5, "name": "wheezy", "image": "assets/cards/wheezy.webp" },
+  { "id": 6, "name": "whiskey", "image": "assets/cards/whiskey.webp" },
+  { "id": 7, "name": "rat", "image": "assets/cards/rat.webp" },
+  { "id": 8, "name": "djimmi", "image": "assets/cards/djimmi.webp" },
+  { "id": 9, "name": "hilda", "image": "assets/cards/hilda.webp" }
 ]
