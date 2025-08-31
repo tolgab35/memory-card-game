@@ -1,5 +1,6 @@
 const GRID = document.querySelector(".grid-container");
 const SCORE_EL = document.getElementById("score");
+const TURNS_EL = document.getElementById("turns");
 const RESTART_BTN = document.getElementById("restart");
 
 let deck = [];
@@ -7,6 +8,7 @@ let first = null,
   second = null;
 let lock = false;
 let score = 0;
+let turns = 0;
 
 async function loadData() {
   const res = await fetch("data/cards.json");
@@ -42,6 +44,8 @@ function resetState() {
   lock = false;
   score = 0;
   SCORE_EL.textContent = score;
+  turns = 0;
+  TURNS_EL.textContent = turns;
 }
 
 function renderGrid() {
@@ -96,9 +100,14 @@ function onFlip(el) {
     first = second = null;
     lock = false;
     SCORE_EL.textContent = ++score;
+    TURNS_EL.textContent = ++turns;
 
     if (document.querySelectorAll(".card.matched").length === deck.length) {
-      setTimeout(() => alert("Congratulations! You finished the game."), 400);
+      setTimeout(
+        () =>
+          alert(`Congratulations! You finished the game with ${turns} moves.`),
+        400
+      );
     }
   } else {
     setTimeout(() => {
@@ -106,6 +115,7 @@ function onFlip(el) {
       second.classList.remove("flipped");
       first = second = null;
       lock = false;
+      TURNS_EL.textContent = ++turns;
     }, 650);
   }
 }
