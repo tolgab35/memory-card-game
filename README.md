@@ -6,7 +6,7 @@ beat the game in as few turns as possible.
 
 ## 🔗 Live Demo
 
-Play it here: **https://tolgab35.github.io/memory-card-game/**
+Play it here: **https://tolgab35.github.io/cuphead-memory-cards/**
 
 ## 🖼️ Preview
 
@@ -31,7 +31,7 @@ Play it here: **https://tolgab35.github.io/memory-card-game/**
 
 ## 📂 Project Structure
 
-    MEMORY-CARD-GAME
+    CUPHEAD-MEMORY-CARDS
     │── assets/
     │   ├── cards/           # Card images (Cuphead bosses)
     │   ├── favicon.png      # Favicon
@@ -49,8 +49,8 @@ Play it here: **https://tolgab35.github.io/memory-card-game/**
 Clone the repository and open `index.html` in your browser:
 
 ```bash
-git clone https://github.com/tolgab35/memory-card-game.git
-cd memory-card-game
+git clone https://github.com/tolgab35/cuphead-memory-cards.git
+cd cuphead-memory-cards
 open index.html
 ```
 
